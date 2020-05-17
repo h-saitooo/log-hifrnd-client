@@ -1,0 +1,36 @@
+{
+  "name": "log-hifrnd-client",
+  "version": "1.0.0",
+  "description": "hifrnd log site by gatsby.",
+  "main": "index.js",
+  "scripts": {
+    "build": "gatsby build",
+    "develop": "gatsby develop",
+    "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
+    "start": "npm run develop",
+    "serve": "gatsby serve",
+    "clean": "gatsby clean"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/h-saitooo/log-hifrnd-client.git"
+  },
+  "author": "Hiroki Saito <hiroki.saito@hifrnd.com>",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "@emotion/core": "^10.0.28",
+    "gatsby": "^2.21.24",
+    "gatsby-plugin-emotion": "^4.3.1",
+    "gatsby-source-contentful": "^2.3.3",
+    "gatsby-transformer-remark": "^2.8.8",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "typography": "^0.16.19",
+    "typography-theme-github": "^0.16.19"
+  },
+  "devDependencies": {
+    "dotenv": "^8.2.0",
+    "prettier": "^2.0.5"
+  }
+}
