@@ -17,6 +17,7 @@ module.exports = {
         accessToken: process.env.CONTENTFUL_API_KEY,
         host: activeEnv !== `development` ? `cdn.contentful.com` : `preview.contentful.com`
       }
-    }
+    },
+    `gatsby-transformer-remark`,
   ]
 }
