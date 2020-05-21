@@ -17,7 +17,7 @@ export default function Home({ data }) {
 
 export const query = graphql`
   query {
-    allContentfulBlogPost {
+    allContentfulBlogPost(sort: { fields: [updatedAt], order: DESC }) {
       edges {
         node {
           contentful_id
@@ -32,7 +32,7 @@ export const query = graphql`
             name
             slug
           }
-          publishDate
+          publishDate(formatString: "YYYY-MM-DD")
         }
       }
     }

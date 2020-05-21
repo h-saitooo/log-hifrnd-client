@@ -4,11 +4,11 @@ import { Link } from 'gatsby'
 const PostLink = ({ title, slug, tags, publishDate }) => {
   return (
     <div>
-      <p><Link to={slug}>{ title }</Link></p>
+      <p><Link to={`/post/${slug}`}>{ title }</Link></p>
       <ul>
         {tags.map(({ slug, name }) => (
           <li>
-            <Link to={slug}>{name}</Link>
+            <Link to={`/tag/${slug}`}>{name}</Link>
           </li>
         ))}
       </ul>
