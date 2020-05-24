@@ -7,6 +7,21 @@ require('dotenv').config({
   path: `.env.${activeEnv}`
 })
 
+exports.onCreateWebpackConfig = ({ actions }) => {
+  actions.setWebpackConfig({
+    resolve: {
+      alias: {
+        "~assets": path.resolve(__dirname, 'assets'),
+        "~components": path.resolve(__dirname, 'src/components'),
+        "~layout": path.resolve(__dirname, 'src/layout'),
+        "~templates": path.resolve(__dirname, 'src/templates'),
+        "~pages": path.resolve(__dirname, 'src/pages'),
+        "~utils": path.resolve(__dirname, 'src/utils'),
+      }
+    }
+  })
+}
+
 exports.onCreateNode = ({ node, getNode, actions }) => {
   const { createNodeField } = actions
   if (node.internal.type === `ContentfulBlogPost`) {

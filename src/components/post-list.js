@@ -5,7 +5,7 @@ const PostList = ({ posts }) => {
   return (
     <div>
       {posts.map(({ node }) => (
-        <PostLink key={node.contentful_id} {...node} />
+        <PostLink key={ node.id } {...node} />
       ))}
     </div>
   )

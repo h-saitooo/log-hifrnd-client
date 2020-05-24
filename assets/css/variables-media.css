@@ -1,0 +1,5 @@
+@custom-media --pc (width >= 960px);
+@custom-media --tab (width < 769px);
+@custom-media --sp (width < 480px);
+@custom-media --sp-sm (width < 375px);
+@custom-media --retina (resolution >= 1.5dppx);
