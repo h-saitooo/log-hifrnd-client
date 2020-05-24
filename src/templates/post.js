@@ -3,6 +3,7 @@ import { Link, graphql } from 'gatsby'
 import styled from '@emotion/styled'
 
 import LayoutGlobal from '~layout/global'
+import postStyles from './post.module.css'
 
 const PostMeta = styled.div`
   margin-bottom: 3rem;
@@ -35,7 +36,7 @@ const PostAttachment = styled.div`
 const LinkLabel = styled.p`
   display: inline-block;
   margin: 0 .5rem 0 0;
-  font-size: 0.8rem;
+  font-size: .6rem;
   color: var(--color-text-pale);
 `
 
@@ -49,6 +50,7 @@ const LinkItem = styled.li`
   display: inline-block;
   margin: 0 0 0 1rem;
   padding: 0;
+  font-size: .8rem;
   &:first-of-type {
     margin: 0;
   }
@@ -58,6 +60,11 @@ const LinkItem = styled.li`
       text-decoration-color: var(--color-hero);
     }
   }
+`
+
+const Eyecatch = styled.figure`
+  margin-right: -2rem;
+  margin-left: -2rem;
 `
 
 export default function Article({ data }) {
@@ -82,7 +89,20 @@ export default function Article({ data }) {
           </PostAttachment>
           <PostTitle>{ postData.title }</PostTitle>
         </PostMeta>
-        <div className="post-body" dangerouslySetInnerHTML={{ __html: postData.content.childMarkdownRemark.html }} />
+        {(() => {
+          if (postData.eyecatch !== null) {
+            console.log(postData.eyecatch)
+            return (
+              <Eyecatch>
+                <img
+                  src={postData.eyecatch.sizes.src}
+                  alt={postData.eyecatch.title}
+                />
+              </Eyecatch>
+            )
+          }
+        })()}
+        <div className={postStyles.postBody} dangerouslySetInnerHTML={{ __html: postData.content.childMarkdownRemark.html }} />
       </LayoutGlobal>
     </div>
   )
@@ -108,6 +128,17 @@ export const query = graphql`
         childMarkdownRemark {
           html
         }
+      }
+      eyecatch {
+        id
+        file {
+          url
+        }
+        sizes {
+          src
+          srcSet
+        }
+        title
       }
     }
   }

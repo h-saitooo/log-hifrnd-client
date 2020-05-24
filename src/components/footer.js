@@ -2,7 +2,7 @@ import React from 'react'
 import styled from '@emotion/styled'
 
 const Footer = styled.footer`
-  padding: var(--margin-content) 0;
+  padding: 4rem 0 2.5rem;
   text-align: center;
 `
 

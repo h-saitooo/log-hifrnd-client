@@ -2,7 +2,12 @@
   --max-width: 720px;
   --margin: 0.625rem;
   --margin-content: 2.5rem;
-  --margin-side: 1.5rem;
+  --margin-side: 2rem;
+
+  @media (--sp) {
+    --margin-content: 2rem;
+    --margin-side: 1.25rem;
+  }
 
   --fontFamily:
     YakuHanJPs,
@@ -11,14 +16,11 @@
     system-ui,
     sans-serif;
   --fontFamily-code: Consolas, Menlo, 'Courier New', Courier, monospace;
-  --fontSize: 1rem;
-  --fontSize-small: 0.8rem;
-  --fontSize-code: 0.9rem;
-  --lineHeight-base: 1.4;
-  --lineHeight-content: 1.85;
-  --lineHeight-code: 1.5;
 
   --color-base: #fff;
+  --color-bg-pre: #c6cacf;
+  --color-bg-blockquote: #ebebeb;
+  --color-text-blockquote: #1a1a1a;
   --color-hero: #1c96d4;
   --color-text: #1a1a1a;
   --color-text-pale: #2e2e2e;
@@ -33,6 +35,7 @@
   /* stylelint-disable-next-line csstools/media-use-custom-media */
   @media (prefers-color-scheme: dark) {
     --color-base: #02101f;
+    --color-bg-pre: #182330;
     --color-hero: #ebbf0e;
     --color-text: #f1f1f1;
     --color-text-pale: #bebebe;

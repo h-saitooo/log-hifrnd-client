@@ -5,7 +5,7 @@ import HeaderGlobal from '~components/header'
 import FooterGlobal from '~components/footer'
 
 const Container = styled.div`
-  width: var(--max-width);
+  max-width: var(--max-width);
   margin-right: auto;
   margin-left: auto;
   padding-right: var(--margin-side);
