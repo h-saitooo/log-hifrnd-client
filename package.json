@@ -37,6 +37,7 @@
   "devDependencies": {
     "browserslist-config-google": "^2.0.0",
     "dotenv": "^8.2.0",
+    "netlify-cli": "^2.51.0",
     "prettier": "^2.0.5"
   }
 }
