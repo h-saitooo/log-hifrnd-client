@@ -1,0 +1,37 @@
+.postBody {
+  & p {
+    & a {
+      text-decoration: underline;
+
+      &:hover {
+        text-decoration: none;
+      }
+    }
+    & code {
+      padding: .2rem .4rem;
+      background-color: var(--color-bg-pre);
+    }
+  }
+
+  & pre {
+    padding: 1rem;
+    background-color: var(--color-bg-pre);
+    overflow-x: auto;
+  }
+
+  & blockquote {
+    margin-right: 0;
+    margin-left: 0;
+    padding: 1rem;
+    color: var(--color-text-blockquote);
+    background-color: var(--color-bg-blockquote);
+  }
+
+  & hr {
+    margin-top: 2rem;
+    margin-right: -1rem;
+    margin-bottom: 2rem;
+    margin-left: -1rem;
+    background: #aaa;
+  }
+}

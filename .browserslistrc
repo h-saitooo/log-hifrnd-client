@@ -1,0 +1,2 @@
+extends browserslist-config-google
+not ie 11

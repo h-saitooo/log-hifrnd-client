@@ -1,0 +1,18 @@
+version: 2.1
+orbs:
+  node: circleci/node@12.16.3
+jobs:
+  build:
+    executor:
+      name: node/default
+    steps:
+      - checkout
+      - node/with-cache:
+          steps:
+            - run: yarn
+            - run: yarn build
+            - run: yarn netlify deploy -p -d public -a ${NETLIFY_AUTH_TOKEN} -s ${NETLIFY_API_ID}
+workflows:
+    build:
+      jobs:
+        - build

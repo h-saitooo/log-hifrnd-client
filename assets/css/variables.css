@@ -1,0 +1,49 @@
+:root {
+  --max-width: 720px;
+  --margin: 0.625rem;
+  --margin-content: 2.5rem;
+  --margin-side: 2rem;
+
+  @media (--sp) {
+    --margin-content: 2rem;
+    --margin-side: 1.25rem;
+  }
+
+  --fontFamily:
+    YakuHanJPs,
+    YakuHanJP,
+    'Kinto Sans',
+    system-ui,
+    sans-serif;
+  --fontFamily-code: Consolas, Menlo, 'Courier New', Courier, monospace;
+
+  --color-base: #fff;
+  --color-bg-pre: #c6cacf;
+  --color-bg-blockquote: #ebebeb;
+  --color-text-blockquote: #1a1a1a;
+  --color-hero: #1c96d4;
+  --color-text: #1a1a1a;
+  --color-text-pale: #2e2e2e;
+  --color-heading: #000;
+  --color-link: #ebbf0e;
+  --color-caption: #a9a9a9;
+  --color-border: #1c96d4;
+  --color-selection: #6b46e3;
+  --color-selection-text: #f1f1f1;
+
+  /* color scheme */
+  /* stylelint-disable-next-line csstools/media-use-custom-media */
+  @media (prefers-color-scheme: dark) {
+    --color-base: #02101f;
+    --color-bg-pre: #182330;
+    --color-hero: #ebbf0e;
+    --color-text: #f1f1f1;
+    --color-text-pale: #bebebe;
+    --color-heading: #fff;
+    --color-link: #1c96d4;
+    --color-caption: #a9a9a9;
+    --color-border: #ebbf0e;
+    --color-selection: #e8e4f5;
+    --color-selection-text: #1a1a1a;
+  }
+}
