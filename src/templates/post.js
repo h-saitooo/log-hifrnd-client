@@ -91,7 +91,6 @@ export default function Article({ data }) {
         </PostMeta>
         {(() => {
           if (postData.eyecatch !== null) {
-            console.log(postData.eyecatch)
             return (
               <Eyecatch>
                 <img

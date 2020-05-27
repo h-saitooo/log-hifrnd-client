@@ -1,7 +1,12 @@
 import React from 'react'
+import LayoutGlobal from '../layout/global'
 
-export default function NotFound() {
+export default function Home({ data }) {
   return (
-    <p>Not Found.</p>
+    <div>
+      <LayoutGlobal>
+        <p>Not Found.</p>
+      </LayoutGlobal>
+    </div>
   )
 }
