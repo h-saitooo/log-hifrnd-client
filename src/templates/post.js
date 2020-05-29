@@ -75,7 +75,7 @@ export default function Article({ data }) {
         <PostMeta>
           <PostPublishDate><time dateTime={postData.publishDate}>{postData.publishDate}</time></PostPublishDate>
           <PostAttachment>
-            <LinkLabel>Category:</LinkLabel><LinkItem><Link to={`/tag/${postData.category.slug}`}>{postData.category.name}</Link></LinkItem>
+            <LinkLabel>Category:</LinkLabel><LinkItem><Link to={`/category/${postData.category.slug}`}>{postData.category.name}</Link></LinkItem>
           </PostAttachment>
           <PostAttachment>
             <LinkLabel>Tags:</LinkLabel>
@@ -91,7 +91,6 @@ export default function Article({ data }) {
         </PostMeta>
         {(() => {
           if (postData.eyecatch !== null) {
-            console.log(postData.eyecatch)
             return (
               <Eyecatch>
                 <img

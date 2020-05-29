@@ -7,7 +7,11 @@ export default function Home({ data }) {
   return (
     <div>
       <LayoutGlobal>
-        <PostList posts={data.allContentfulBlogPost.edges} />
+        {(() => {
+          if (data.allContentfulBlogPost.edges[0] !== null) {
+            return <PostList posts={data.allContentfulBlogPost.edges} />
+          }
+        })()}
       </LayoutGlobal>
     </div>
   )

@@ -22,17 +22,6 @@ exports.onCreateWebpackConfig = ({ actions }) => {
   })
 }
 
-exports.onCreateNode = ({ node, getNode, actions }) => {
-  const { createNodeField } = actions
-  if (node.internal.type === `ContentfulBlogPost`) {
-    createNodeField({
-      node,
-      name: `slug`,
-      value: node.slug,
-    })
-  }
-}
-
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
 
@@ -45,6 +34,30 @@ exports.createPages = async ({ graphql, actions }) => {
           }
         }
       }
+      allContentfulCategory {
+        edges {
+          node {
+            blogpost {
+              id
+            }
+            name
+            id
+            slug
+          }
+        }
+      }
+      allContentfulTags {
+        edges {
+          node {
+            blogpost {
+              id
+            }
+            name
+            id
+            slug
+          }
+        }
+      }
     }
   `)
 
@@ -52,12 +65,37 @@ exports.createPages = async ({ graphql, actions }) => {
     console.error(result.errors)
   }
 
+  // Create BlogPost Page
   result.data.allContentfulBlogPost.edges.forEach(({ node }) => {
     createPage({
       path: `/post/${node.slug}`,
       component: path.resolve(`./src/templates/post.js`),
       context: {
         slug: node.slug
+      }
+    })
+  })
+
+  // Create Post list at each categories.
+  result.data.allContentfulCategory.edges.forEach(({ node }) => {
+    if (node.blogpost === null) return
+    createPage({
+      path: `/category/${node.slug}`,
+      component: path.resolve(`./src/templates/category-post-list.js`),
+      context: {
+        slug: node.slug,
+      }
+    })
+  })
+
+  // Create Post list at each Tags.
+  result.data.allContentfulTags.edges.forEach(({ node }) => {
+    if (node.blogpost === null) return
+    createPage({
+      path: `/tag/${node.slug}`,
+      component: path.resolve(`./src/templates/tag-post-list.js`),
+      context: {
+        slug: node.slug,
       }
     })
   })
