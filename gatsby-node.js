@@ -37,6 +37,9 @@ exports.createPages = async ({ graphql, actions }) => {
       allContentfulCategory {
         edges {
           node {
+            blogpost {
+              id
+            }
             name
             id
             slug
@@ -46,6 +49,9 @@ exports.createPages = async ({ graphql, actions }) => {
       allContentfulTags {
         edges {
           node {
+            blogpost {
+              id
+            }
             name
             id
             slug
@@ -72,6 +78,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
   // Create Post list at each categories.
   result.data.allContentfulCategory.edges.forEach(({ node }) => {
+    if (node.blogpost === null) return
     createPage({
       path: `/category/${node.slug}`,
       component: path.resolve(`./src/templates/category-post-list.js`),
@@ -83,6 +90,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
   // Create Post list at each Tags.
   result.data.allContentfulTags.edges.forEach(({ node }) => {
+    if (node.blogpost === null) return
     createPage({
       path: `/tag/${node.slug}`,
       component: path.resolve(`./src/templates/tag-post-list.js`),
