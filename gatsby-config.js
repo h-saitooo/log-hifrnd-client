@@ -12,7 +12,8 @@ module.exports = {
   siteMetadata: {
     title: `Log - Hifrnd`,
     siteUrl: `https://log.hifrnd.com`,
-    description: `Bonsoir.`
+    description: `Hi Friend. Might lifelog. Programming, Gadget, Music...`,
+    author: 'Hiroki Saito'
   },
   plugins: [
     {
@@ -24,6 +25,7 @@ module.exports = {
       }
     },
     `gatsby-transformer-remark`,
+    `gatsby-plugin-react-helmet`,
     `gatsby-plugin-emotion`,
     `gatsby-plugin-postcss`,
     {

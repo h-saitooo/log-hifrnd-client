@@ -1,5 +1,7 @@
 import React from 'react'
 import { graphql } from 'gatsby'
+
+import SEO from '~components/seo'
 import LayoutGlobal from '~layout/global'
 import PostList from '~components/post-list'
 
@@ -12,6 +14,11 @@ export default function CategoryClassedList({ data }) {
   })
   return (
     <div>
+      <SEO
+        title={`Category - ${category.name}`}
+        description={`Linked ${category.name} category posts`}
+        slug={`/category/${category.slug}`}
+      />
       <LayoutGlobal>
         <h1>Category - { category.name }</h1>
         <PostList posts={blogpost} />
