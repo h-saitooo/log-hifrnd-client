@@ -1,5 +1,7 @@
 import React from 'react'
 import { graphql } from 'gatsby'
+
+import SEO from '~components/seo'
 import LayoutGlobal from '~layout/global'
 import PostList from '~components/post-list'
 
@@ -12,6 +14,11 @@ export default function TagClassedList({ data }) {
   })
   return (
     <div>
+      <SEO
+        title={`Tag - ${tag.name}`}
+        description={`Linked ${tag.name} Tag posts`}
+        slug={`/tag/${tag.slug}`}
+      />
       <LayoutGlobal>
         <h1>Tag - { tag.name }</h1>
         <PostList posts={blogpost} />

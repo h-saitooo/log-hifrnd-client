@@ -3,6 +3,7 @@ import { Link, graphql } from 'gatsby'
 import styled from '@emotion/styled'
 
 import LayoutGlobal from '~layout/global'
+import SEO from '~components/seo'
 import postStyles from './post.module.css'
 
 const PostMeta = styled.div`
@@ -71,6 +72,11 @@ export default function Article({ data }) {
   const postData = data.contentfulBlogPost
   return (
     <div>
+      <SEO
+        title={postData.title}
+        description={postData.content.childMarkdownRemark.excerpt}
+        slug={`/post/${postData.slug}`}
+      />
       <LayoutGlobal>
         <PostMeta>
           <PostPublishDate><time dateTime={postData.publishDate}>{postData.publishDate}</time></PostPublishDate>
@@ -126,6 +132,7 @@ export const query = graphql`
       content {
         childMarkdownRemark {
           html
+          excerpt(format: PLAIN)
         }
       }
       eyecatch {

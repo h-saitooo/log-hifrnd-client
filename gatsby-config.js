@@ -12,7 +12,8 @@ module.exports = {
   siteMetadata: {
     title: `Log - Hifrnd`,
     siteUrl: `https://log.hifrnd.com`,
-    description: `Bonsoir.`
+    description: `Hi Friend. Might lifelog. Programming, Gadget, Music...`,
+    author: 'Hiroki Saito'
   },
   plugins: [
     {
@@ -24,31 +25,9 @@ module.exports = {
       }
     },
     `gatsby-transformer-remark`,
+    `gatsby-plugin-react-helmet`,
     `gatsby-plugin-emotion`,
-    {
-      resolve: `gatsby-plugin-postcss`,
-      options: {
-        postCssPlugins: [
-          postcssPresetEnv({
-            stage: 2,
-            features: {
-              'custom-media-queries': true,
-              'nesting-rules': true,
-              'prefers-color-scheme': true
-            },
-            importFrom: [
-              './assets/css/variables-media.css',
-              './assets/css/variables.css'
-            ]
-          }),
-          cssnano({
-            preset: 'default',
-            autoprefixer: false,
-            zindex: false,
-          })
-        ]
-      }
-    },
+    `gatsby-plugin-postcss`,
     {
       resolve: `gatsby-plugin-typography`,
       options: {
