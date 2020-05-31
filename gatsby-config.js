@@ -13,7 +13,8 @@ module.exports = {
     title: `Log - Hifrnd`,
     siteUrl: `https://log.hifrnd.com`,
     description: `Hi Friend. Might lifelog. Programming, Gadget, Music...`,
-    author: 'Hiroki Saito'
+    author: 'Hiroki Saito',
+    image: `/ogp.png`
   },
   plugins: [
     {

@@ -20,6 +20,7 @@ function SEO({
             description
             author
             siteUrl
+            image
           }
         }
       }
@@ -27,7 +28,10 @@ function SEO({
   )
 
   const metaDescription = description || site.siteMetadata.description
-  const image = imageSource ? `${site.siteMetadata.siteUrl}${imageSource}` : `${site.siteMetadata.siteUrl}/opg.png`
+  const socialImage =
+    imageSource
+      ? `${site.siteMetadata.siteUrl}${imageSource}`
+      : `${site.siteMetadata.siteUrl}${site.siteMetadata.image}`
   const pageType = title ? `webpage` : `article`
   const pageUrl = slug ? `${site.siteMetadata.siteUrl}${slug}` : `${site.siteMetadata.siteUrl}`
 
@@ -61,11 +65,11 @@ function SEO({
         },
         {
           property: `og:image`,
-          content: image,
+          content: socialImage,
         },
         {
           name: `twitter:image`,
-          content: image,
+          content: socialImage,
         },
         {
           name: `twitter:card`,
