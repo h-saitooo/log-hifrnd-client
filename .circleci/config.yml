@@ -7,9 +7,10 @@ jobs:
       - image: circleci/node:12.16.3
     steps:
       - checkout
-      - node/with-cache:
+      - node:
           steps:
             - run: yarn
+            - run: yarn clean
             - run: yarn build
             - run: yarn netlify deploy -p -d public -a ${NETLIFY_AUTH_TOKEN} -s ${NETLIFY_API_ID}
 workflows:
