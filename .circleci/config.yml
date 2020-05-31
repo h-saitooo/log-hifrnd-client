@@ -1,21 +1,66 @@
 version: 2.1
 orbs:
   node: circleci/node@1.1.6
-jobs:
-  build:
+executors:
+  node-executor:
     docker:
       - image: circleci/node:12.16.3
+
+commands:
+  gatsby-build:
     steps:
       - checkout
-      - node/with-cache:
-          steps:
-            - run: yarn
-            - run: yarn build
-            - run: yarn netlify deploy -p -d public -a ${NETLIFY_AUTH_TOKEN} -s ${NETLIFY_API_ID}
+      - restore_cache:
+          keys:
+            - yarn-cache-{{ checksum "yarn.lock" }}
+      - run:
+          name: Install Dependencies
+          command: yarn install
+      - save_cache:
+          key: yarn-cache-{{ checksum "yarn.lock" }}
+          paths:
+            - ./node_modules
+      - restore_cache:
+          keys:
+            - gatsby-public-cache-{{ .Branch }}
+      - run:
+          name: Clean Public
+          command: yarn clean
+      - run:
+          name: Gatsby Build
+          command: GATSBY_CPU_COUNT=2 yarn build
+      - save_cache:
+          key: gatsby-public-cache-{{ .Branch }}
+          paths:
+            - ./public
+
 workflows:
-    build:
-      jobs:
-        - build:
-            filters:
-              branches:
-                only: master
+  version: 2.1
+  build-deploy:
+    jobs:
+      - build:
+          filters:
+            branches:
+              only: develop
+      - release:
+          filters:
+            branches:
+              only: master
+
+jobs:
+  build:
+    executor: node-executor
+    working_directory: ~/repo
+    steps:
+      - gatsby-build
+      - run:
+          name: Netlify Deploy
+          command: ./node_modules/.bin/netlify deploy --site ${NETLIFY_API_ID} --auth ${NETLIFY_AUTH_TOKEN} --dir=public
+  release:
+    executor: node-executor
+    working_directory: ~/repo
+    steps:
+      - gatsby-build
+      - run:
+          name: Netlify Deploy
+          command: ./node_modules/.bin/netlify deploy --site ${NETLIFY_API_ID} --auth ${NETLIFY_AUTH_TOKEN} --prod --dir=public
