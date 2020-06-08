@@ -90,7 +90,6 @@ module.exports = {
             `,
             output: '/rss.xml',
             title: 'Log - Hifrnd RSS Feeds',
-            match: '^/post/',
           }
         ],
       }
