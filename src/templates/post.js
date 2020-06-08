@@ -132,7 +132,7 @@ export const query = graphql`
       content {
         childMarkdownRemark {
           html
-          excerpt(format: PLAIN)
+          excerpt(format: PLAIN, pruneLength: 120, truncate: true)
         }
       }
       eyecatch {
