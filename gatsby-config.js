@@ -82,7 +82,7 @@ module.exports = {
                           excerpt(format: PLAIN, pruneLength: 120, truncate: true)
                         }
                       }
-                      publishDate
+                      publishDate(formatString: "YYYY-MM-DD")
                     }
                   }
                 }
