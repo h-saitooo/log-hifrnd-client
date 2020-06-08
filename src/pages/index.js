@@ -26,7 +26,7 @@ export const query = graphql`
         title
       }
     }
-    allContentfulBlogPost(sort: { fields: [updatedAt], order: DESC }) {
+    allContentfulBlogPost(sort: { fields: [publishDate], order: DESC }) {
       edges {
         node {
           id
