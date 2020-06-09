@@ -14,7 +14,8 @@ module.exports = {
     siteUrl: `https://log.hifrnd.com`,
     description: `Hi Friend. Might lifelog. Programming, Gadget, Music...`,
     author: 'Hiroki Saito',
-    image: `/ogp.png`
+    image: `/ogp.png`,
+    icon: `/favicon.ico`
   },
   plugins: [
     {
@@ -89,7 +90,7 @@ module.exports = {
               }
             `,
             output: '/rss.xml',
-            title: 'Log - Hifrnd RSS Feeds',
+            title: 'Log - Hifrnd',
           }
         ],
       }
