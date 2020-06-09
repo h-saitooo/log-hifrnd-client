@@ -41,7 +41,7 @@ export const query = graphql`
             name
             slug
           }
-          publishDate(formatString: "YYYY-MM-DD")
+          publishDate
         }
       }
     }

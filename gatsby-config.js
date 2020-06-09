@@ -1,6 +1,7 @@
 // Load Modules
 const postcssPresetEnv = require(`postcss-preset-env`)
-const cssnano          = require(`cssnano`)
+const cssnano = require(`cssnano`)
+const { DateTime, Zone, IANAZone } = require(`luxon`)
 
 // Load Environment Variables
 const activeEnv = process.env.GATSBY_ACTIVE_ENV || process.env.NODE_ENV || 'development'
@@ -14,7 +15,8 @@ module.exports = {
     siteUrl: `https://log.hifrnd.com`,
     description: `Hi Friend. Might lifelog. Programming, Gadget, Music...`,
     author: 'Hiroki Saito',
-    image: `/ogp.png`
+    image: `/ogp.png`,
+    icon: `/favicon.ico`
   },
   plugins: [
     {
@@ -63,7 +65,7 @@ module.exports = {
               return allContentfulBlogPost.edges.map(edge => ({
                 title: edge.node.title,
                 description: edge.node.content.childMarkdownRemark.excerpt,
-                date: edge.node.publishDate,
+                date: DateTime.fromISO(edge.node.publishDate),
                 url: `${site.siteMetadata.siteUrl}/post/${edge.node.slug}`,
                 guid: edge.node.id,
                 custom_elements: [{ "content:encoded": edge.node.content.childMarkdownRemark.excerpt }],
@@ -82,14 +84,14 @@ module.exports = {
                           excerpt(format: PLAIN, pruneLength: 120, truncate: true)
                         }
                       }
-                      publishDate(formatString: "YYYY-MM-DD")
+                      publishDate
                     }
                   }
                 }
               }
             `,
             output: '/rss.xml',
-            title: 'Log - Hifrnd RSS Feeds',
+            title: 'Log - Hifrnd',
           }
         ],
       }
