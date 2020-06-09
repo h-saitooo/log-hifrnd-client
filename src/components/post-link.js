@@ -2,6 +2,8 @@ import React from 'react'
 import { Link } from 'gatsby'
 import styled from '@emotion/styled'
 
+import { DateTime } from 'luxon'
+
 const PostItem = styled.div`
   padding: 1.8rem 0;
   border-bottom: 2px solid var(--color-border);
@@ -51,9 +53,10 @@ const LinkItem = styled.li`
 `
 
 const PostLink = ({ title, slug, tags, publishDate }) => {
+  const optimazedDate = DateTime.fromISO(publishDate).toFormat('yyyy-MM-dd')
   return (
     <PostItem>
-      <PostPublishDate><time>{ publishDate }</time></PostPublishDate>
+      <PostPublishDate><time>{ optimazedDate }</time></PostPublishDate>
       <PostTitle><Link to={`/post/${slug}`}>{ title }</Link></PostTitle>
       <LinkList>
         {tags.map(({ slug, name, id }) => (

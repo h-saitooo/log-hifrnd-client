@@ -2,6 +2,8 @@ import React from 'react'
 import { Link, graphql } from 'gatsby'
 import styled from '@emotion/styled'
 
+import { DateTime } from 'luxon'
+
 import LayoutGlobal from '~layout/global'
 import SEO from '~components/seo'
 import postStyles from './post.module.css'
@@ -70,6 +72,7 @@ const Eyecatch = styled.figure`
 
 export default function Article({ data }) {
   const postData = data.contentfulBlogPost
+  const optimizedDate = DateTime.fromISO(postData.publishDate).toFormat('yyyy-MM-dd')
   return (
     <div>
       <SEO
@@ -79,7 +82,7 @@ export default function Article({ data }) {
       />
       <LayoutGlobal>
         <PostMeta>
-          <PostPublishDate><time dateTime={postData.publishDate}>{postData.publishDate}</time></PostPublishDate>
+          <PostPublishDate><time dateTime={optimizedDate}>{optimizedDate}</time></PostPublishDate>
           <PostAttachment>
             <LinkLabel>Category:</LinkLabel><LinkItem><Link to={`/category/${postData.category.slug}`}>{postData.category.name}</Link></LinkItem>
           </PostAttachment>
@@ -118,7 +121,7 @@ export const query = graphql`
     contentfulBlogPost( slug: { eq: $slug } ) {
       id
       title
-      publishDate(formatString: "YYYY-MM-DD")
+      publishDate
       slug
       category {
         name
