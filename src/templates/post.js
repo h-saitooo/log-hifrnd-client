@@ -9,7 +9,7 @@ import SEO from '~components/seo'
 import postStyles from './post.module.css'
 
 const PostMeta = styled.div`
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
 `
 
 const PostTitle = styled.h1`
