@@ -18,16 +18,17 @@
   --fontFamily-code: Consolas, Menlo, 'Courier New', Courier, monospace;
 
   --color-base: #fff;
-  --color-bg-pre: #c6cacf;
+  --color-bg-pre: #e7ebef;
+  --color-bg-prism: #48545f;
+  --color-bg-prism-hl: #394148;
   --color-bg-blockquote: #ebebeb;
   --color-text-blockquote: #1a1a1a;
   --color-hero: #1c96d4;
   --color-text: #1a1a1a;
   --color-text-pale: #2e2e2e;
   --color-heading: #000;
-  --color-link: #ebbf0e;
+  --color-link: #1c96d4;
   --color-caption: #a9a9a9;
-  --color-border: #1c96d4;
   --color-selection: #6b46e3;
   --color-selection-text: #f1f1f1;
 
@@ -36,11 +37,13 @@
   @media (prefers-color-scheme: dark) {
     --color-base: #02101f;
     --color-bg-pre: #182330;
+    --color-bg-prism: #242d35;
+    --color-bg-prism-hl: #1f2123;
     --color-hero: #ebbf0e;
     --color-text: #f1f1f1;
     --color-text-pale: #bebebe;
     --color-heading: #fff;
-    --color-link: #1c96d4;
+    --color-link: #ebbf0e;
     --color-caption: #a9a9a9;
     --color-border: #ebbf0e;
     --color-selection: #e8e4f5;

@@ -56,24 +56,35 @@ dfn {
   font-style: normal;
 }
 
-code,
-pre {
-  font-family: Consolas, Menlo, Courier, monospace;
-}
-
-code {
-  padding: 0.2em;
-  /* border-radius: $_radius; */
-  /* font-size: $_font-size--small; */
-  background-color: rgba(0,0,0,0.06);
-}
-
-pre code {
-  padding: 0;
-  /* font-size: $_font-size--small; */
-  background-color: inherit;
+& code,
+& pre {
+  font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
 }
 
 img[src$=".svg"] {
   width: 100%;
+}
+
+/* Prismjs Additional */
+:not(pre)>code[class*=language-],
+pre[class*=language-] {
+  background-color: var(--color-bg-prism);
+}
+
+.gatsby-highlight {
+  margin: 1.6rem 0 2.5rem;
+}
+
+.gatsby-highlight::-webkit-scrollbar {
+  display: none;
+}
+
+.gatsby-highlight-code-line {
+  display: block;
+  margin-right: -1em;
+  margin-left: -1em;
+  padding-right: 1em;
+  padding-left: 0.75em;
+  background-color: var(--color-bg-prism-hl);
+  border-left: 0.25em solid #ff4545;
 }
