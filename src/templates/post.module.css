@@ -1,4 +1,9 @@
 .postBody {
+  & h2 {
+    padding-bottom: .75rem;
+    border-bottom: 2px solid var(--color-hero);
+  }
+
   & p {
     & a {
       text-decoration: underline;
@@ -6,17 +11,17 @@
       &:hover {
         text-decoration: none;
       }
+
+      & code {
+        color: var(--color-link);
+      }
     }
+
     & code {
       padding: .2rem .4rem;
+      color: var(--color-text);
       background-color: var(--color-bg-pre);
     }
-  }
-
-  & pre {
-    padding: 1rem;
-    background-color: var(--color-bg-pre);
-    overflow-x: auto;
   }
 
   & blockquote {
